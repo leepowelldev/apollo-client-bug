@@ -15,13 +15,13 @@ function App() {
   const [data, setData] = useState<any>();
   const [error, setError] = useState<any>();
 
-  setupCache(client);
-
   const [getEvent] = useLazyQuery(GET_EVENT, {
     fetchPolicy: 'cache-only',
   });
 
   useEffect(() => {
+    setupCache(client);
+
     (async () => {
       // Hook returns undefined data if fields missing - according to
       // docs this should throw an error?
